@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>AngularTourOfHeroes</title>
@@ -8,8 +9,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
+  <input id="Firsttextbox" onblur="call()">
+  <input id="Secondtextbox">
+  <input id="Thirdtextbox">
+  <button id="btntour" onclick="call()">Auto tour</button>
   <app-root></app-root>
 </body>
+
 </html>
-<script src="tour.js"></script>
+
+<script type="text/javascript">
+  // wait ms milliseconds
+  function wait(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+
+  async function hello() {
+    alert('function call');
+    await wait(5000);
+  }
+
+
+  var tour = new Shepherd.Tour({
+    defaults: {
+      classes: 'shepherd-theme-arrows',
+      buttons: false,
+      scrollTo: true
+    }
+  });
+
+  tour.addStep('First', {
+    title: 'First Name',
+    text: 'Enter your <b>First Name</b> here',
+    attachTo: '#Firsttextbox bottom',
+    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text'
+  });
+  tour.addStep('Second', {
+    title: 'Middle Name',
+    text: 'Enter your <b>Middle Name</b> here.',
+    attachTo: '#Secondtextbox bottom',
+    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text'
+    // buttons: [
+    //   {
+
+    //     text: 'Back',
+    //     classes: 'shepherd-button-example-primary',
+    //     action: tour.back
+    //   }, {
+    //     text: 'Next',
+    //     action: tour.next,
+    //     classes: 'shepherd-button-example-primary'
+    //   }
+    // ]
+  });
+  tour.addStep('step2', {
+    title: 'Last Name',
+    text: 'Enter your <b>Last Name</b> here.',
+    attachTo: '#Thirdtextbox bottom',
+    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+    // buttons: [
+    //   {
+    //     text: 'Back',
+    //     action: tour.back,
+    //     classes: 'shepherd-button-example-primary'
+    //   }, {
+    //     text: 'Exit',
+    //     classes: 'shepherd-button-secondary',
+    //     action: function () {
+    //       return tour.hide();
+    //     }
+    //   }
+    // ]
+  });
+  // ('#Secondtextbox').onfocus()
+  // {
+  //   if (First.isOpen()) {
+  //     Shepherd.activeTour.next();
+  //   }
+  // };
+  tour.start();
+
+  function call() {
+    //if (First.isOpen()) {
+      Shepherd.activeTour.next();
+    //}
+  };
+</script>
