@@ -24,9 +24,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/shepherd.js/dist/css/shepherd-theme-arrows.css",
-              "heros/heroes.component.css"
-
+              "./node_modules/shepherd.js/dist/css/shepherd-theme-arrows.css"
             ],
             "scripts": [
               "./node_modules/shepherd.js/dist/js/popper.min.js",

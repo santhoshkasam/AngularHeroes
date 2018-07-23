@@ -17,124 +17,141 @@
   <button id="btntour" onclick="callnextstep()">Auto tour</button>
   <app-root></app-root>
 </body>
+
 </html>
-<!-- <script>
-    // wait ms milliseconds
-    function wait(ms) {
-    return new Promise(r => setTimeout(r, ms));
-  }
+<script>
+   
 
-  async function hello() {
-    alert('function call');
-    await wait(5000);
-  }
+// var isMomHappy = true;
+//   var tour = new Shepherd.Tour({
+//     defaults: {
+//       classes: 'shepherd-theme-arrows',
+//       //buttons: false,
+//       scrollTo: true,
+//       showCancelLink: true
+//     }
+//   });
 
+//   tour.addStep('Dashboard', {
+//     title: 'Hero',
+//     text: 'Click on the tile see the details',
+//     attachTo: '#btnFirstPage bottom',
+//     classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+//     buttons: [
+//       {
+//         text: 'next',
+//         classes: 'shepherd-button-example-primary',
+//         action: tour.next
+//       },
+//       {
+//         text: 'End Tour',
+//         classes: 'shepherd-button-example-primary',
+//         action: tour.cancel
+//       }
+//     ]
+//   });
+//   tour.addStep('HeroList', {
+//     title: 'Hero Name',
+//     text: 'Click here to see the hero derails',
+//     attachTo: '#btnHeroesPage right',
+//     beforeShowPromise:function () {
+//     return new Promise(
+//     function (resolve, reject) {
+//         if (isMomHappy) {
+//           window.location.href='/heroes';
+//             var phone = {
+//                 brand: 'Samsung',
+//                 color: 'black'
+//             };
+//             resolve(phone);
+//         } else {
+//             var reason = new Error('mom is not happy');
+//             alert('hide');
+//             reject(reason);
+//         }
+
+//     }
+// )},
+//     classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+//     buttons: [
+//       {
+//         text: 'Back',
+//         classes: 'shepherd-button-example-primary',
+//         action: tour.back
+//       }, {
+//         text: 'Next',
+//         action: tour.next,
+//         classes: 'shepherd-button-example-primary'
+//       },
+//       {
+//         text: 'End Tour',
+//         classes: 'shepherd-button-example-primary',
+//         action: tour.cancel
+//       }
+//     ]
+//   });
+//   tour.addStep('EditHeroDetail', {
+//     title: 'Hero Name',
+//     text: 'Edit the Hero Name here',
+//     attachTo: '#lblEditName right',
+//     classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+//     buttons: [
+//       {
+//         text: 'Back',
+//         classes: 'shepherd-button-example-primary',
+//         action: tour.back
+//       }, {
+//         text: 'Next',
+//         action: tour.next,
+//         classes: 'shepherd-button-example-primary'
+//       },
+//       {
+//         text: 'End Tour',
+//         classes: 'shepherd-button-example-primary',
+//         action: tour.cancel
+//       }
+//     ]
+//   });
+//   tour.addStep('GoBack', {
+//     title: 'Last Name',
+//     text: 'Click here to go back to previous screen',
+//     attachTo: '#btnGoback bottom',
+//     classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+//     buttons: [
+//       {
+//         text: 'Back',
+//         action: tour.back,
+//         classes: 'shepherd-button-example-primary'
+//       }, {
+//         text: 'Exit',
+//         classes: 'shepherd-button-secondary',
+//         action: function () {
+//           return tour.hide();
+//         }
+//       }
+//     ]
+//   });
+//   tour.start();
+
+//   function gotoNextStep() {
+//     //if (First.isOpen()) {
+//     window.location.href='/heroes';
+//     Shepherd.activeTour.next();
+//     //}
+//   };
+
+// </script>
+<script>
+  /* ES5, using Bluebird */ 
+var isMomHappy = true;
+
+// Promise
+
+
+
+// call our promise
 
   var tour = new Shepherd.Tour({
-    defaults: {
-      classes: 'shepherd-theme-arrows',
-      //buttons: false,
-      scrollTo: true,
-      showCancelLink: true
-    }
-  });
-
-  tour.addStep('Dashboard', {
-    title: 'Hero',
-    text: 'Click on the tile see the details',
-    attachTo: '#btnFirstPage bottom',
-    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
-    buttons: [
-      {
-        text: 'next',
-        classes: 'shepherd-button-example-primary',
-        action: function()
-        {
-          gotoNextStep();          
-        }
-      },
-      {
-        text: 'End Tour',
-        classes: 'shepherd-button-example-primary',
-        action: tour.cancel
-      }
-    ]
-  });
-  tour.addStep('HeroList', {
-    title: 'Hero Name',
-    text: 'Click here to see the hero derails',
-    attachTo: '#btnHeroesPage right',
-    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
-    buttons: [
-      {
-        text: 'Back',
-        classes: 'shepherd-button-example-primary',
-        action: tour.back
-      }, {
-        text: 'Next',
-        action: tour.next,
-        classes: 'shepherd-button-example-primary'
-      },
-      {
-        text: 'End Tour',
-        classes: 'shepherd-button-example-primary',
-        action: tour.cancel
-      }
-    ]
-  });
-  tour.addStep('EditHeroDetail', {
-    title: 'Hero Name',
-    text: 'Edit the Hero Name here',
-    attachTo: '#lblEditName right',
-    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
-    buttons: [
-      {
-        text: 'Back',
-        classes: 'shepherd-button-example-primary',
-        action: tour.back
-      }, {
-        text: 'Next',
-        action: tour.next,
-        classes: 'shepherd-button-example-primary'
-      },
-      {
-        text: 'End Tour',
-        classes: 'shepherd-button-example-primary',
-        action: tour.cancel
-      }
-    ]
-  });
-  tour.addStep('GoBack', {
-    title: 'Last Name',
-    text: 'Click here to go back to previous screen',
-    attachTo: '#btnGoback bottom',
-    classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
-    buttons: [
-      {
-        text: 'Back',
-        action: tour.back,
-        classes: 'shepherd-button-example-primary'
-      }, {
-        text: 'Exit',
-        classes: 'shepherd-button-secondary',
-        action: function () {
-          return tour.hide();
-        }
-      }
-    ]
-  });
-  tour.start();
-
-  function gotoNextStep() {
-    //if (First.isOpen()) {
-    window.location.href='/heroes';
-    Shepherd.activeTour.next();
-    //}
-  };
-
-</script> -->
-<script >
-var tour = new Shepherd.Tour({
     defaults: {
       classes: 'shepherd-theme-arrows',
       //buttons: false,
@@ -150,10 +167,9 @@ var tour = new Shepherd.Tour({
     classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
     buttons: [
       {
-        text: 'next',
+        text: 'Progress',
         classes: 'shepherd-button-example-primary',
-        action: function()
-        {
+        action: function () {
           tour.next();
         },
       },
@@ -164,10 +180,33 @@ var tour = new Shepherd.Tour({
       }
     ]
   });
+
   tour.addStep('SecondStep', {
     title: 'Second Name',
     text: 'Please enter the <b>Second Name</b> here',
     attachTo: '#Secondtextbox bottom',
+    beforeShowPromise:function () {
+    return new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+          // window.location.href='/heroes';
+          // alert('show');
+            var phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            var reason = new Error('mom is not happy');
+            // alert('hide');
+            reject(reason);
+        }
+
+    }
+)
+},
+
+    
     classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
     buttons: [
       {
@@ -208,9 +247,8 @@ var tour = new Shepherd.Tour({
       }
     ]
   });
-function callnextstep()
-{
+  function callnextstep() {
     Shepherd.activeTour.next();
-}
+  }
   tour.start(); 
 </script>
